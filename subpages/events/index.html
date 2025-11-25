@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Auctions | Wheelz On Fire</title>
     <script src="../../main.js" defer></script>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 <body>
     <header>
@@ -24,9 +24,37 @@
         <h2 style="margin-top:28px">Upcoming Auctions — Exclusive Collections</h2>
         <p class="muted">High-definition listings below. Click a card to view more details. Placeholder images will be replaced in stage two.</p>
 
+        <form id="sortFilterForm" class="sort-filter" autocomplete="off" style="margin-bottom:24px;display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+            <label>Sort by:
+                <select id="sortBy">
+                    <option value="price">Price</option>
+                    <option value="year">Year</option>
+                    <option value="marque">Marque</option>
+                </select>
+            </label>
+            <label>Filter by year:
+                <input type="number" id="filterYear" min="1900" max="2025" placeholder="e.g. 1995" style="width:90px" />
+            </label>
+            <label>Filter by marque:
+                <input type="text" id="filterMarque" placeholder="e.g. Ferrari" style="width:120px" />
+            </label>
+            <button type="button" id="clearFilters" class="ghost">Clear</button>
+        </form>
+
         <section id="eventsGrid" class="events-grid" aria-live="polite">
             <!-- Cards inserted by main.js -->
         </section>
+
+        <!-- Modal for car details/gallery -->
+        <div id="carModal" class="car-modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none">
+            <div class="modal-bg" id="modalBg"></div>
+            <div class="modal-content" id="modalContent">
+                <!-- Populated by JS -->
+            </div>
+            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+            <button class="modal-prev" id="modalPrev" aria-label="Previous image">&#8592;</button>
+            <button class="modal-next" id="modalNext" aria-label="Next image">&#8594;</button>
+        </div>
     </main>
 
     <footer class="site-footer container">

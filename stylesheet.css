@@ -1,3 +1,37 @@
+/* Hero image carousel styles */
+.hero-bg-carousel {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+}
+.hero-bg-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(.25,1.5,.5,1.1);
+    z-index: 0;
+}
+.hero-bg-img.active {
+    opacity: 1;
+    z-index: 1;
+}
+.parallax-section {
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    will-change: background;
+    z-index: 1;
+}
+.car-collection-outer{position:relative;min-height:100vh;overflow-x:hidden;}
+.car-collection-gradient{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;transition:background 0.8s cubic-bezier(.25,1.5,.5,1.1);background:linear-gradient(120deg,#f6f5f2 60%,#222 100%);}
+.car-collection{position:relative;z-index:2;}
 :root{
     --bg:#f6f5f2;
     --card:#ffffff;
@@ -46,6 +80,26 @@ body{
 
 .site-footer{padding:28px 0;color:var(--muted);font-size:14px}
 
+/* Car collection vertical scroll */
+.car-collection{display:flex;flex-direction:column;gap:48px;padding:48px 0;}
+.car-card{position:relative;display:flex;flex-direction:row;align-items:center;min-height:420px;border-radius:var(--radius);box-shadow:0 6px 32px rgba(16,16,16,0.08);overflow:hidden;margin-bottom:24px;transition:background 0.7s;}
+.car-card-bg{position:absolute;inset:0;z-index:0;transition:background 0.7s;}
+.car-card-content{position:relative;z-index:2;display:flex;flex-direction:row;align-items:center;width:100%;}
+.car-gallery{display:flex;align-items:center;gap:0;flex:1;justify-content:center;}
+.car-img-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:420px;height:320px;}
+.car-img{max-width:100%;max-height:100%;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.18);transition:transform 0.3s cubic-bezier(.25,1.5,.5,1.1),box-shadow 0.3s;}
+.car-img.pop-out{transform:scale(1.18) rotate(-2deg);box-shadow:0 8px 48px 0 rgba(0,0,0,0.28);}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.18);border:none;color:#fff;font-size:2.2rem;padding:8px 14px;border-radius:8px;cursor:pointer;z-index:10;transition:background 0.2s;}
+.gallery-nav.left{left:12px;}
+.gallery-nav.right{right:12px;}
+.gallery-nav:focus{outline:2px solid var(--accent);}
+.car-details{flex:1;display:flex;flex-direction:column;gap:18px;padding-left:32px;color:#fff;}
+.car-details h3{margin:0;font-size:1.6rem;}
+.car-meta{font-size:1rem;color:#e9e6e2;}
+.car-price{font-size:1.3rem;font-weight:700;color:var(--accent);}
+.car-card:hover .car-img,.car-card:focus-within .car-img{transform:scale(1.08) rotate(-1deg);box-shadow:0 8px 32px rgba(0,0,0,0.18);}
+.car-card-bg{background:linear-gradient(120deg, var(--card) 40%, #222 100%);opacity:0.85;}
+
 /* Events grid */
 .events-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));padding:28px 0}
 .auction-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(16,16,16,0.06);display:flex;flex-direction:column}
@@ -54,6 +108,31 @@ body{
 .car-title{margin:0;font-weight:600}
 .car-meta{color:var(--muted);font-size:14px;margin-top:6px}
 .car-price{margin-top:auto;font-weight:700;color:var(--accent-2)}
+
+/* Modal/gallery styles */
+.car-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);transition:background 0.5s;}
+.modal-bg{position:absolute;inset:0;z-index:-1;transition:background 0.7s;}
+.modal-content{background:rgba(255,255,255,0.04);border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:32px 24px;display:flex;flex-direction:row;align-items:center;gap:32px;min-width:480px;max-width:900px;}
+.modal-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;}
+.modal-img{max-width:420px;max-height:420px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.18);transition:transform 0.3s cubic-bezier(.25,1.5,.5,1.1),box-shadow 0.3s;}
+.modal-img.pop-out{transform:scale(1.18) rotate(-2deg);box-shadow:0 8px 48px 0 rgba(0,0,0,0.28);}
+.modal-details{flex:1;display:flex;flex-direction:column;gap:18px;color:#fff;}
+.modal-details h2{margin:0;font-size:2rem;}
+.modal-meta{font-size:1rem;color:#e9e6e2;}
+.modal-price{font-size:1.3rem;font-weight:700;color:var(--accent);}
+.modal-close,.modal-prev,.modal-next{position:absolute;top:24px;background:rgba(0,0,0,0.18);border:none;color:#fff;font-size:2rem;padding:8px 14px;border-radius:8px;cursor:pointer;z-index:10;transition:background 0.2s;}
+.modal-close{right:24px;}
+.modal-prev{left:24px;top:50%;transform:translateY(-50%);font-size:2.2rem;}
+.modal-next{right:24px;top:50%;transform:translateY(-50%);font-size:2.2rem;}
+.modal-close:focus,.modal-prev:focus,.modal-next:focus{outline:2px solid var(--accent);}
+.car-modal:focus{outline:2px solid var(--accent-2);}
+
+/* Auction card hover pop-out */
+.auction-card:hover .auction-media,.auction-card:focus .auction-media{transform:scale(1.08) rotate(-1deg);box-shadow:0 8px 32px rgba(0,0,0,0.18);transition:transform 0.3s cubic-bezier(.25,1.5,.5,1.1),box-shadow 0.3s;}
+.auction-media{transition:transform 0.3s cubic-bezier(.25,1.5,.5,1.1),box-shadow 0.3s;}
+
+/* Focus outlines for accessibility */
+.nav-btn:focus,.primary:focus,.ghost:focus{outline:2px solid var(--accent);}
 
 @media (max-width:700px){
     .feature-card{flex-direction:column}

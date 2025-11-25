@@ -23,29 +23,26 @@
     </header>
 
     <main>
-        <section class="hero" aria-hidden="true">
+        <section class="hero immersive-hero" aria-hidden="true">
+            <div class="hero-bg-carousel">
+                <img src="assets/cars/1962Ferrari250GTO/v1.png" alt="Ferrari 250 GTO" class="hero-bg-img active" />
+                <img src="assets/cars/1995McLarenF1/v1.png" alt="McLaren F1" class="hero-bg-img" />
+                <img src="assets/cars/1967 Shelby GT500/v1.png" alt="Shelby GT500" class="hero-bg-img" />
+                <img src="assets/cars/1969 Nissan Skyline GT‑R (Hakosuka)/v1.png" alt="Nissan Skyline GT-R" class="hero-bg-img" />
+            </div>
             <div class="hero-overlay"></div>
             <div class="hero-content container">
-                <h2 class="eyebrow">Exclusive Collections</h2>
-                <h1 class="hero-title">Quiet luxury for the car connoisseur</h1>
-                <p class="lead">Curated auctions of rare, high-performance and highly collectible automobiles.</p>
-                <div class="hero-cta">
-                    <button class="primary" id="browseEvents">Browse Auctions</button>
-                </div>
+                <h1 class="hero-title">Experience Quiet Luxury</h1>
+                <p class="lead">Discover rare, high-performance, and highly collectible automobiles in our exclusive auctions.</p>
+                <button class="primary hero-cta" id="browseEvents">Browse Auctions</button>
             </div>
         </section>
 
-        <section class="featured container">
-            <h2>Car of the Week</h2>
-            <article class="feature-card">
-                <div class="feature-media" style="background-image: url('assets/placeholders/car-1.svg');"></div>
-                <div class="feature-body">
-                    <h3>Featured Car: 1967 Shelby GT500</h3>
-                    <h4>Price: €4,200,000 (2025)</h4>
-                    <p class="muted">A timeless American muscle icon in concours condition. Twin-carb V8, detailed restoration, matching-numbers.</p>
-                    <button class="ghost">View Details</button>
-                </div>
-            </article>
+        <section class="car-collection-outer parallax-section">
+            <div class="car-collection-gradient" id="carCollectionGradient"></div>
+            <section class="car-collection container" id="carCollection">
+                <!-- Car cards will be rendered by JS -->
+            </section>
         </section>
     </main>
 
