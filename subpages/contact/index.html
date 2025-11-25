@@ -7,22 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Wheels On Fire</title>
     <script src="../../main.js" defer></script>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 
 <!------------------------------------------------------------>
 
 <body>
 
-    <header>
-        <h1>Wheelz On Fire</h1>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="brand">Wheelz On Fire</h1>
+            <nav class="site-nav">
+                <button id="homeBTN" class="nav-btn">Home</button>
+                <button id="aboutBTN" class="nav-btn">About</button>
+                <button id="eventsBTN" class="nav-btn">Events</button>
+                <button id="contactBTN" class="nav-btn">Contact</button>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <button id="homeBTN">Home</button>
-        <button id="aboutBTN">About Us</button>
-        <button id="contactBTN">Contact Us</button>
-    </nav>
 
+    <main class="container">
     <form>
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
@@ -35,6 +39,7 @@
 
         <input type="submit" value="Submit" id="submitBTN">
     </form>
+    </main>
 </body>
 
 

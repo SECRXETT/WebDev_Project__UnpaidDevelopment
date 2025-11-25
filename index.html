@@ -10,37 +10,52 @@
 </head>
 
 <body>
-    <header>
-        <h1>Wheelz On Fire</h1>
-
-        <nav>
-            <button id="homeBTN">Home</button>
-            <button id="aboutBTN">About Us</button>
-            <button id="contactBTN">Contact Us</button>
-        </nav>
-
+    <header class="site-header">
+        <div class="container">
+            <h1 class="brand">Wheelz On Fire</h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <button id="homeBTN" class="nav-btn">Home</button>
+                <button id="aboutBTN" class="nav-btn">About</button>
+                <button id="eventsBTN" class="nav-btn">Events</button>
+                <button id="contactBTN" class="nav-btn">Contact</button>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <h2>Car of the Week</h2>
-        <section> <!--Car of the week section-->
-            <img src="https://imgs.search.brave.com/ZChlz2EFqZu2NjBRkbSN27xJqCAK0MRteu2ZLF2g8cw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9wYXJh/bmFxdWUtcGgtbm92/LW1hemRhLXJ4LXRh/c3RlZnVsbHktYnVp/bHQtY2FyLW1lZXQt/bm92ZW1iZXItcGFy/YW5hcXVlLXBoaWxp/cHBpbmVzLXRhc3Rl/ZnVsbHktYnVpbHQt/Y2FyLW1lZXQtZXZl/bnQtMjY5MzI4Nzk5/LmpwZw"
-             alt="Car Image" width="400" height="350">
-            <h3>Featured Car: Mazda RX7</h3>
-            <h4>Price: €45,000</h4>
-            <p>The Mazda RX7 is a legendary sports car known for its rotary engine and sleek design.</p> 
-            <p>It offers an exhilarating driving experience with its lightweight chassis and responsive handling.</p>
-            <p>Perfect for Car-enthusiasts looking for a blend of performance and style.</p>
-            <button>Purchase</button>
+        <section class="hero" aria-hidden="true">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h2 class="eyebrow">Exclusive Collections</h2>
+                <h1 class="hero-title">Quiet luxury for the car connoisseur</h1>
+                <p class="lead">Curated auctions of rare, high-performance and highly collectible automobiles.</p>
+                <div class="hero-cta">
+                    <button class="primary" id="browseEvents">Browse Auctions</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured container">
+            <h2>Car of the Week</h2>
+            <article class="feature-card">
+                <div class="feature-media" style="background-image: url('assets/placeholders/car-1.svg');"></div>
+                <div class="feature-body">
+                    <h3>Featured Car: 1967 Shelby GT500</h3>
+                    <h4>Price: €4,200,000 (2025)</h4>
+                    <p class="muted">A timeless American muscle icon in concours condition. Twin-carb V8, detailed restoration, matching-numbers.</p>
+                    <button class="ghost">View Details</button>
+                </div>
+            </article>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; Property of John O' Reilly. All rights reserved. Development by Underpaid Development Studios</p>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; Wheelz On Fire. All rights reserved. Development by Underpaid Development Studios</p>
+        </div>
     </footer>
 
     <script src="main.js"></script>
-
 
 </html>
 

@@ -1,0 +1,4 @@
+/* Local styles for Events page. The root stylesheet provides shared tokens, but this file keeps the page self-contained */
+@import url('../../stylesheet.css');
+
+/* nothing else required here; layout and components are in the root file */
