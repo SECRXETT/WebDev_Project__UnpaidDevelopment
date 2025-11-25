@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Autoclave - Premier Auctions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Custom Tailwind Configuration for Quiet Luxury Palette
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'charcoal': {
+              DEFAULT: '#191919',  // Primary Background (Deep Black Slate)
+              800: '#262626',      // Card Background
+              700: '#404040',      // Contrast Background
+            },
+            'brass': {
+              DEFAULT: '#a18037', // Muted Gold/Brass Accent
+              light: '#c39634',
+              dark: '#7e622b',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom CSS Variables & General Styling */
+    :root {
+      --accent-color: #a18037; /* Muted Brass/Gold */
+    }
+
+    /* Navigation/Text Styles */
+    .navbar a {
+      color: white !important;
+      font-weight: 400; /* Lighter weight */
+      transition: color 0.2s;
+      letter-spacing: 0.05em; /* Slightly more space for elegance */
+    }
+    .navbar a:hover {
+      color: var(--accent-color) !important;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-charcoal text-white font-sans">
+
+<!-- Main Navigation (Fixed Header) -->
+<!-- Header starts opaque since this is a content page, not the carousel -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-charcoal bg-opacity-95 shadow-lg shadow-black/50 transition-all duration-300 ease-in-out">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+        <div class="flex justify-between items-center h-16">
+            <!-- Navbar brand -->
+            <a class="text-xl font-normal tracking-widest text-white hover:text-brass transition" href="index.html">
+                WHEELZ ON FIRE 
+            </a>
+            
+            <!-- Desktop Menu Items - UPDATED LINKS -->
+            <div class="hidden md:flex space-x-8 lg:space-x-12">
+                <a href="index.html" class="nav-link text-sm tracking-widest uppercase" data-page="home">Home</a>
+                <a href="about.html" class="nav-link text-sm tracking-widest uppercase" data-page="about">About</a> 
+                <a href="auctions.html" class="nav-link text-sm tracking-widest uppercase" data-page="auctions">Auctions</a>
+                <a href="contact.html" class="nav-link text-sm tracking-widest uppercase" data-page="contact">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-md text-white hover:text-brass focus:outline-none focus:ring-2 focus:ring-brass" aria-controls="mobile-menu" aria-expanded="false">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-charcoal bg-opacity-95" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-start">
+            <a href="index.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="home">Home</a>
+            <a href="about.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="about">About</a>
+            <a href="auctions.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="auctions">Auctions</a>
+            <a href="contact.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="contact">Contact</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- MAIN CONTENT: AUCTIONS SECTION (Moved from index.html) -->
+<main class="pt-24 min-h-screen">
+    <section id="auctions" class="py-12 md:py-20 bg-charcoal-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Auction Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-light mb-4 uppercase tracking-widest text-brass">Premier Collector Auctions</h2>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                    The most exclusive seasonal events for acquiring investment-grade vintage and classic automobiles.
+                </p>
+            </div>
+
+            <!-- 1. Seasonal Events Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+                
+                <!-- Spring Grandeur Auction -->
+                <div class="bg-charcoal-800 p-6 rounded-xl shadow-lg border-t-2 border-brass transition duration-300 hover:shadow-brass-dark/50 hover:bg-charcoal-700">
+                    <h3 class="text-2xl font-normal mb-3 text-brass-light">Spring Grandeur</h3>
+                    <p class="text-gray-400 text-sm mb-4">April 15 - 17 | Monte Carlo, Monaco</p>
+                    <p class="text-gray-300 text-sm">Focus: Post-War European Sports Cars & Convertibles. Marks the start of the driving season with iconic open-top classics.</p>
+                    <a href="contact.html" class="mt-4 inline-block text-sm font-semibold text-brass hover:text-white transition">View Catalogue &rarr;</a>
+                </div>
+
+                <!-- Summer Speed Showcase -->
+                <div class="bg-charcoal-800 p-6 rounded-xl shadow-lg border-t-2 border-brass transition duration-300 hover:shadow-brass-dark/50 hover:bg-charcoal-700">
+                    <h3 class="text-2xl font-normal mb-3 text-brass-light">Summer Speed</h3>
+                    <p class="text-gray-400 text-sm mb-4">August 18 - 20 | Monterey, California, USA</p>
+                    <p class="text-gray-300 text-sm">Focus: Racing Provenance & American Muscle. The year's headline event featuring high-value, track-ready historic vehicles.</p>
+                    <a href="contact.html" class="mt-4 inline-block text-sm font-semibold text-brass hover:text-white transition">View Catalogue &rarr;</a>
+                </div>
+
+                <!-- Fall Collection Sale -->
+                <div class="bg-charcoal-800 p-6 rounded-xl shadow-lg border-t-2 border-brass transition duration-300 hover:shadow-brass-dark/50 hover:bg-charcoal-700">
+                    <h3 class="text-2xl font-normal mb-3 text-brass-light">Fall Collection</h3>
+                    <p class="text-gray-400 text-sm mb-4">October 5 - 7 | London, UK</p>
+                    <p class="text-gray-300 text-sm">Focus: Pre-War Vintage & British Marques. A curated selection of investment-grade automobiles and historically significant vehicles.</p>
+                    <a href="contact.html" class="mt-4 inline-block text-sm font-semibold text-brass hover:text-white transition">View Catalogue &rarr;</a>
+                </div>
+                
+                <!-- Winter Iconics Gala -->
+                <div class="bg-charcoal-800 p-6 rounded-xl shadow-lg border-t-2 border-brass transition duration-300 hover:shadow-brass-dark/50 hover:bg-charcoal-700">
+                    <h3 class="text-2xl font-normal mb-3 text-brass-light">Winter Iconics</h3>
+                    <p class="text-gray-400 text-sm mb-4">January 20 - 22 | Scottsdale, Arizona, USA</p>
+                    <p class="text-gray-300 text-sm">Focus: Modern Classics & Future Icons. A forward-looking sale of limited-production models from the 1980s to the early 2000s.</p>
+                    <a href="contact.html" class="mt-4 inline-block text-sm font-semibold text-brass hover:text-white transition">View Catalogue &rarr;</a>
+                </div>
+            </div>
+
+            <!-- 2. Tickets and Sponsorship Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <!-- Ticket Entry -->
+                <div class="bg-charcoal p-8 rounded-xl shadow-2xl border border-brass-dark">
+                    <h3 class="text-3xl font-light mb-5 text-brass-light">Bidder Registration</h3>
+                    <p class="text-gray-400 mb-6">Access to the auction requires pre-registration for all guests and bidders. Choose your level of access below:</p>
+                    
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center">
+                            <span class="text-brass mr-3 text-xl">
+                                <!-- SVG Lock Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm-2 4h4c1.104 0 2-.896 2-2v-3c0-1.104-.896-2-2-2h-.084A5.992 5.992 0 0 0 12 5c-3.309 0-6 2.691-6 6v2c0 1.104.896 2 2 2h4zm2-1c-.551 0-1-.449-1-1v-2c0-.551.449-1 1-1s1 .449 1 1v2c0 .551-.449 1-1 1z"/></svg>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-normal text-lg">General Viewing Pass (USD 150)</span>
+                                <span class="text-sm text-gray-400">Access to viewing and exhibition halls only.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-brass mr-3 text-xl">
+                                <!-- SVG Target Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-normal text-lg">Preferred Bidders Pass (USD 500)</span>
+                                <span class="text-sm text-gray-400">Includes reserved seating, paddle, and VIP reception access.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-brass mr-3 text-xl">
+                                <!-- SVG Star Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-normal text-lg">Bidder Pre-Approval</span>
+                                <span class="text-sm text-gray-400">Required for bidding over $100,000. Apply 14 days prior to event.</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="mt-8 block text-center bg-brass hover:bg-brass-dark text-charcoal font-semibold py-3 rounded-lg transition shadow-md shadow-black/50">Register for Auction Access</a>
+                </div>
+
+                <!-- Sponsorship Details -->
+                <div class="bg-charcoal p-8 rounded-xl shadow-2xl border border-brass-dark">
+                    <h3 class="text-3xl font-light mb-5 text-brass-light">Exclusive Sponsorship</h3>
+                    <p class="text-gray-400 mb-6">Elevate your brand with premium visibility to an exclusive audience of global collectors and investors.</p>
+                    
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-brass mr-3 text-2xl font-light tracking-wide">T1</span>
+                            <div class="flex flex-col">
+                                <span class="font-normal text-lg">Title Partner Package</span>
+                                <span class="text-sm text-gray-400">Primary branding, exclusive vehicle display space, and top media placement.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brass mr-3 text-2xl font-light tracking-wide">T2</span>
+                            <div class="flex flex-col">
+                                <span class="font-normal text-lg">Official Auction Partner</span>
+                                <span class="text-sm text-gray-400">Logo presence on all printed materials and prime placement in the auction hall.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brass mr-3 text-2xl font-light tracking-wide">T3</span>
+                            <div class="flex flex-col">
+                                <span class="font-normal text-lg">Event Hospitality Sponsor</span>
+                                <span class="text-sm text-gray-400">Exclusive branding of one of the event's social functions (e.g., Gala Dinner).</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="mt-8 block text-center border border-brass-dark hover:bg-charcoal-700 text-brass font-normal py-3 rounded-lg transition shadow-md shadow-black/50">Inquire About Partnership</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</main>
+<!-- END MAIN CONTENT -->
+
+<!-- Common Footer -->
+<footer class="bg-charcoal-700 py-10 text-center text-gray-400">
+    <div class="max-w-7xl mx-auto px-4">
+        <p>&copy; 2025 WHEELZ ON FIRE. All Rights Reserved. | Exclusive Classic Collections.</p>
+        <div class="mt-4 space-x-4">
+            <a href="index.html" class="hover:text-brass transition">Home</a>
+            <a href="about.html" class="hover:text-brass transition">About</a>
+            <a href="auctions.html" class="hover:text-brass transition">Auctions</a>
+            <a href="contact.html" class="hover:text-brass transition">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // --- Common JS: Navigation and Scroll Logic ---
+    const header = document.querySelector('header');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    let lastScrollY = window.scrollY;
+    const headerHeight = header.offsetHeight;
+    const scrollTolerance = 10; 
+
+    function handleScroll() {
+        const currentScrollY = window.scrollY;
+        
+        // --- Visibility Hiding/Showing Logic ---
+        if (currentScrollY > lastScrollY && currentScrollY > headerHeight + scrollTolerance) {
+            // Scrolling down: Hide header
+            if (mobileMenu.classList.contains('hidden')) {
+                header.classList.add('transform', '-translate-y-full');
+            }
+        } else if (currentScrollY < lastScrollY) {
+            // Scrolling up: Show header
+            header.classList.remove('transform', '-translate-y-full');
+        }
+
+        lastScrollY = currentScrollY;
+    }
+
+    // UPDATED: Simplified highlighting logic for single-page links
+    function highlightActivePage() {
+        const path = window.location.pathname;
+        const fileName = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+        
+        let activePageData = 'home'; // Default
+
+        if (fileName === 'index.html' || fileName === '') {
+            activePageData = 'home';
+        } else if (fileName === 'about.html') {
+            activePageData = 'about';
+        } else if (fileName === 'auctions.html') {
+            activePageData = 'auctions';
+        } else if (fileName === 'contact.html') {
+            activePageData = 'contact';
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('text-brass');
+            link.classList.add('text-white');
+
+            if (link.getAttribute('data-page') === activePageData) {
+                link.classList.remove('text-white');
+                link.classList.add('text-brass');
+            }
+        });
+    }
+
+    // --- Mobile Menu Logic (Common) ---
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // Initialize common functions on load
+    document.addEventListener('DOMContentLoaded', () => {
+        highlightActivePage();
+        handleScroll(); 
+        window.addEventListener('scroll', handleScroll);
+    });
+
+</script>
+</body>
+</html>
