@@ -1,58 +1,292 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+    <title>The Autoclave - Home & Premier Auctions</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page - Wheels On Fire</title>
-    <link rel="stylesheet" href="stylesheet.css">
-</head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind Configuration for Quiet Luxury Palette
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'charcoal': {
+                            DEFAULT: '#191919', // Primary Background (Deep Black Slate)
+                            800: '#262626', // Card Background
+                            700: '#404040', // Contrast Background
+                        },
+                        'brass': {
+                            DEFAULT: '#a18037', // Muted Gold/Brass Accent
+                            light: '#c39634',
+                            dark: '#7e622b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS Variables & General Styling */
+        :root {
+            --accent-color: #a18037; /* Muted Brass/Gold */
+        }
 
-<body>
-    <header class="site-header">
-        <div class="container">
-            <h1 class="brand">Wheelz On Fire</h1>
-            <nav class="site-nav" aria-label="Main navigation">
-                <button id="homeBTN" class="nav-btn">Home</button>
-                <button id="aboutBTN" class="nav-btn">About</button>
-                <button id="eventsBTN" class="nav-btn">Events</button>
-                <button id="contactBTN" class="nav-btn">Contact</button>
-            </nav>
+        /* Full-screen height for all carousel elements */
+        #introCarousel,
+        .carousel-inner,
+        .carousel-item {
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* --- FADING CAROUSEL STYLES --- */
+        .carousel-inner {
+            position: relative;
+            transition: none;
+        }
+
+        .carousel-item {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            
+            /* Stacking and Fading logic */
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out; /* Slower, more luxurious fade */
+            z-index: 1;
+        }
+
+        /* The active slide is brought to the front and made visible */
+        .carousel-item.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        
+        /* Specific background images for each slide (Placeholders) */
+        /* --- MAIN CAROUSEL IMAGES (Using Placeholders for demonstration) --- */
+
+        /* --- SECOND CAROUSEL IMAGES (Using your local paths) --- */
+        .carousel-item.car-fiat-1 {
+            background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v1.png');
+        }
+        .carousel-item.car-fiat-2 {
+            background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v2.png');
+        }
+        .carousel-item.car-fiat-3 {
+             /* Assuming a third slide is needed for 3 indicators */
+             background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v1.png');
+        }
+        
+        /* Mask/Overlay Style - Subtly darker, deep slate */
+        .mask {
+            background-color: rgba(0, 0, 0, 0.5); /* Soft overlay */
+            position: absolute;
+            inset: 0;
+        }
+
+        /* Navigation/Text Styles */
+        .navbar a {
+            color: white !important;
+            font-weight: 400; /* Lighter weight */
+            transition: color 0.2s;
+            letter-spacing: 0.05em; /* Slightly more space for elegance */
+        }
+        .navbar a:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        /* Carousel Controls */
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            z-index: 50;
+            transition: background-color 0.3s;
+        }
+        .carousel-control:hover {
+            background-color: var(--accent-color); /* Gold hover */
+        }
+        
+        /* Ensure the body scroll is smooth for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+</head>
+<body class="bg-charcoal text-white font-sans">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 ease-in-out">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex justify-between items-center h-16">
+                <a class="text-xl font-normal tracking-widest text-white hover:text-brass transition" href="index.html">
+                    WHEELZ ON FIRE
+                </a>
+                
+                <div class="hidden md:flex space-x-8 lg:space-x-12">
+                    <a href="index.html" class="nav-link text-sm tracking-widest uppercase" data-page="home">Home</a>
+                    <a href="subpages/about.html" class="nav-link text-sm tracking-widest uppercase" data-page="about">About</a>
+                    <a href="subpages/auction.html" class="nav-link text-sm tracking-widest uppercase" data-page="auctions">Auctions</a>
+                    <a href="subpages/contact.html" class="nav-link text-sm tracking-widest uppercase" data-page="contact">Contact</a>
+                </div>
+
+                <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-md text-white hover:text-brass focus:outline-none focus:ring-2 focus:ring-brass" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        
+        <div class="md:hidden hidden bg-charcoal bg-opacity-95" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-start">
+                <a href="index.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="home">Home</a>
+                <a href="subpages/about.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="about">About</a>
+                <a href="subpages/auction.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="auctions">Auctions</a>
+                <a href="subpages/contact.html" class="nav-link text-white hover:bg-charcoal-800 hover:text-brass block px-3 py-2 rounded-md text-base font-medium" data-page="contact">Contact</a>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero immersive-hero" aria-hidden="true">
-            <div class="hero-bg-carousel">
-                <img src="assets/cars/1962Ferrari250GTO/v1.png" alt="Ferrari 250 GTO" class="hero-bg-img active" />
-                <img src="assets/cars/1995McLarenF1/v1.png" alt="McLaren F1" class="hero-bg-img" />
-                <img src="assets/cars/1967 Shelby GT500/v1.png" alt="Shelby GT500" class="hero-bg-img" />
-                <img src="assets/cars/1969 Nissan Skyline GT‑R (Hakosuka)/v1.png" alt="Nissan Skyline GT-R" class="hero-bg-img" />
+    <section id="fiatCarousel" class="carousel relative overflow-hidden h-[500px] mt-12 mb-12">
+        <div class="carousel-inner relative w-full h-full">
+            <div class="carousel-item active car-fiat-1" data-slide-index="0" role="group" aria-roledescription="Slide" aria-label="1 of 3: Fiat Front View">
+                <div class="mask absolute inset-0 flex justify-center items-center">
+                    <div class="text-white text-center p-4 max-w-2xl">
+                    </div>
+                </div>
             </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content container">
-                <h1 class="hero-title">Experience Quiet Luxury</h1>
-                <p class="lead">Discover rare, high-performance, and highly collectible automobiles in our exclusive auctions.</p>
-                <button class="primary hero-cta" id="browseEvents">Browse Auctions</button>
+
+            <div class="carousel-item car-fiat-2" data-slide-index="1" role="group" aria-roledescription="Slide" aria-label="2 of 3: Fiat Rear View">
+                <div class="mask absolute inset-0 flex justify-center items-center">
+                    <div class="text-white text-center p-4 max-w-2xl">
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <section class="car-collection-outer parallax-section">
-            <div class="car-collection-gradient" id="carCollectionGradient"></div>
-            <section class="car-collection container" id="carCollection">
-                <!-- Car cards will be rendered by JS -->
-            </section>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; Wheelz On Fire. All rights reserved. Development by Underpaid Development Studios</p>
+            
+             <div class="carousel-item car-fiat-3" data-slide-index="2" role="group" aria-roledescription="Slide" aria-label="3 of 3: Fiat Detail">
+                <div class="mask absolute inset-0 flex justify-center items-center">
+                    <div class="text-white text-center p-4 max-w-2xl">
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
 
-    <script src="main.js"></script>
+        <div class="fiat-indicators carousel-indicators absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3" role="tablist">
+            <button data-slide-to="0" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 active:opacity-100 focus:opacity-100" aria-label="Go to slide 1"></button>
+            <button data-slide-to="1" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 hover:opacity-80 focus:opacity-80" aria-label="Go to slide 2"></button>
+            <button data-slide-to="2" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 hover:opacity-80 focus:opacity-80" aria-label="Go to slide 3"></button>
+        </div>
 
+        <button class="fiat-prev carousel-control-prev carousel-control left-6 z-20" aria-label="Previous slide">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button class="fiat-next carousel-control-next carousel-control right-6 z-20" aria-label="Next slide">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+    </section>
+
+
+
+    <script>
+        function initializeCarousel(carouselId, nextButtonClass, prevButtonClass, indicatorContainerClass, interval = 5000) {
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+
+            const slides = carousel.querySelectorAll('.carousel-item');
+            const indicators = carousel.querySelectorAll('.' + indicatorContainerClass + ' button');
+            const nextButton = carousel.querySelector('.' + nextButtonClass);
+            const prevButton = carousel.querySelector('.' + prevButtonClass);
+            let activeIndex = 0;
+            let slideInterval;
+
+            function updateCarousel(newIndex) {
+                // Ensure index wraps around
+                if (newIndex >= slides.length) {
+                    newIndex = 0;
+                } else if (newIndex < 0) {
+                    newIndex = slides.length - 1;
+                }
+
+                // Deactivate current slide and indicator
+                slides[activeIndex].classList.remove('active');
+                indicators[activeIndex].classList.remove('active:opacity-100', 'focus:opacity-100');
+                indicators[activeIndex].classList.add('opacity-40', 'hover:opacity-80', 'focus:opacity-80');
+
+                // Activate new slide and indicator
+                activeIndex = newIndex;
+                slides[activeIndex].classList.add('active');
+                indicators[activeIndex].classList.add('active:opacity-100', 'focus:opacity-100');
+                indicators[activeIndex].classList.remove('opacity-40', 'hover:opacity-80', 'focus:opacity-80');
+            }
+
+            function cycleSlides() {
+                updateCarousel(activeIndex + 1);
+            }
+
+            function startInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(cycleSlides, interval);
+            }
+
+            // Event Listeners for Controls
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    updateCarousel(activeIndex + 1);
+                    startInterval(); // Reset timer after manual control
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    updateCarousel(activeIndex - 1);
+                    startInterval(); // Reset timer after manual control
+                });
+            }
+
+            // Event Listeners for Indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    updateCarousel(index);
+                    startInterval(); // Reset timer after manual control
+                });
+            });
+
+            // Start auto-cycling
+            startInterval();
+        }
+
+        // Initialize the main carousel (full screen)
+        initializeCarousel('mainCarousel', 'carousel-control-next', 'carousel-control-prev', 'carousel-indicators', 5000);
+
+        // Initialize the second carousel (Fiat example)
+        // Note: You must use unique class names for controls if you want to use the generic carousel-control-next/prev classes on the button elements themselves,
+        // or ensure your selector (e.g., '.fiat-next') targets the button within the specific carousel ID.
+        // I've updated the buttons to use unique classes (fiat-next, fiat-prev) and the indicator container to use 'fiat-indicators'.
+        initializeCarousel('fiatCarousel', 'fiat-next', 'fiat-prev', 'fiat-indicators', 4000);
+
+        // Mobile Menu Toggler
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
 </html>
-
