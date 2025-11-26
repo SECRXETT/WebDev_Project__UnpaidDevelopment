@@ -1,4 +1,4 @@
-name: Jekyll site CI
+name: Jekyll Cross-Account Deployment
 
 on:
   push:
@@ -6,15 +6,44 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# Permissions are still required for checkout, but the deployment step will use the PAT.
+permissions:
+  contents: read
+
 jobs:
-  build:
-
+  build_and_deploy: # Combined the jobs for simplicity in this cross-repo scenario
     runs-on: ubuntu-latest
-
+    
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      # 1. Build the Jekyll site using the Docker container
+      - name: Build the site in the jekyll/builder container
+        run: |
+          # The output directory must be readable and writable
+          docker run \
+            -v ${{ github.workspace }}:/srv/jekyll \
+            jekyll/builder:latest /bin/bash -c "jekyll build --future"
+
+      # 2. Deploy the built site to the target repository using the PAT
+      # This action is designed to handle cross-repository pushing.
+      - name: Deploy to Target GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # The target repository where the static files will be pushed
+          external_repository: SECRXETT/WebDev_Project__UnpaidDevelopment 
+          
+          # The deployment token stored as a secret in this repository
+          # This token must belong to the user who owns the target repository
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          
+          # The branch in the target repository to push the static files to. 
+          # We keep 'gh-pages' as a common convention for project sites.
+          publish_branch: gh-pages 
+          
+          # The source directory containing the static HTML files (output of jekyll build)
+          publish_dir: _site
+          
+          # Optional: Specify a custom commit message
+          commit_message: "Deploying from Source Repo ${{ github.repository }} by GitHub Actions"
