@@ -83,7 +83,16 @@
              /* Assuming a third slide is needed for 3 indicators */
              background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v1.png');
         }
-        
+        .carousel-item.car-fiats-1 {
+            background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v1.png');
+        }
+        .carousel-item.car-fiats-2 {
+            background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v2.png');
+        }
+        .carousel-item.car-fiats-3 {
+             /* Assuming a third slide is needed for 3 indicators */
+             background-image: url('assets/cars/1954 Fiat 8V Supersonic/1954 Fiat 8V Supersonic_v1.png');
+        }
         /* Mask/Overlay Style - Subtly darker, deep slate */
         .mask {
             background-color: rgba(0, 0, 0, 0.5); /* Soft overlay */
@@ -200,7 +209,43 @@
         </button>
     </section>
 
+<section id="fiatsCarousel" class="carousel relative overflow-hidden h-[500px] mt-12 mb-12">
+        <div class="carousel-inner relative w-full h-full">
+            <div class="carousel-item active car-fiats-1" data-slide-index="0" role="group" aria-roledescription="Slide" aria-label="1 of 3: Fiat Front View">
+                <div class="mask absolute inset-0 flex justify-center items-center">
+                    <div class="text-white text-center p-4 max-w-2xl">
+                    </div>
+                </div>
+            </div>
 
+            <div class="carousel-item car-fiats-2" data-slide-index="1" role="group" aria-roledescription="Slide" aria-label="2 of 3: Fiat Rear View">
+                <div class="mask absolute inset-0 flex justify-center items-center">
+                    <div class="text-white text-center p-4 max-w-2xl">
+                    </div>
+                </div>
+            </div>
+            
+             <div class="carousel-item car-fiats-3" data-slide-index="2" role="group" aria-roledescription="Slide" aria-label="3 of 3: Fiat Detail">
+                <div class="mask absolute inset-0 flex justify-center items-center">
+                    <div class="text-white text-center p-4 max-w-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fiats-indicators carousel-indicators absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3" role="tablist">
+            <button data-slide-to="0" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 active:opacity-100 focus:opacity-100" aria-label="Go to slide 1"></button>
+            <button data-slide-to="1" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 hover:opacity-80 focus:opacity-80" aria-label="Go to slide 2"></button>
+            <button data-slide-to="2" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 hover:opacity-80 focus:opacity-80" aria-label="Go to slide 3"></button>
+        </div>
+
+        <button class="fiats-prev carousel-control-prev carousel-control left-6 z-20" aria-label="Previous slide">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button class="fiats-next carousel-control-next carousel-control right-6 z-20" aria-label="Next slide">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+    </section>
 
     <script>
         function initializeCarousel(carouselId, nextButtonClass, prevButtonClass, indicatorContainerClass, interval = 5000) {
@@ -278,7 +323,8 @@
         // or ensure your selector (e.g., '.fiat-next') targets the button within the specific carousel ID.
         // I've updated the buttons to use unique classes (fiat-next, fiat-prev) and the indicator container to use 'fiat-indicators'.
         initializeCarousel('fiatCarousel', 'fiat-next', 'fiat-prev', 'fiat-indicators', 4000);
-
+        initializeCarousel('fiatsCarousel', 'fiats-next', 'fiats-prev', 'fiats-indicators', 4001);
+        
         // Mobile Menu Toggler
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
