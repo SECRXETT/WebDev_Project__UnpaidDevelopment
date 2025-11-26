@@ -171,7 +171,7 @@
         </div>
     </header>
 
-    <section id="fiatCarousel" class="carousel relative overflow-hidden h-[500px]  **pt-12 pb-6**">
+    <section id="fiatCarousel" class="carousel relative overflow-hidden h-screen **pt-12 pb-6**">
         <div class="carousel-inner relative w-full h-full">
             <div class="carousel-item active car-fiat-1" data-slide-index="0" role="group" aria-roledescription="Slide" aria-label="1 of 3: Fiat Front View">
                 <div class="mask absolute inset-0 flex justify-center items-center">
@@ -209,7 +209,7 @@
         </button>
     </section>
 
-<section id="fiatsCarousel" class="carousel relative overflow-hidden h-[500px] **pt-6 pb-12**">
+<section id="fiatsCarousel" class="carousel relative overflow-hidden h-screen **pt-6 pb-12**">
         <div class="carousel-inner relative w-full h-full">
             <div class="carousel-item active car-fiats-1" data-slide-index="0" role="group" aria-roledescription="Slide" aria-label="1 of 3: Fiat Front View">
                 <div class="mask absolute inset-0 flex justify-center items-center">
@@ -233,7 +233,7 @@
             </div>
         </div>
 
-        <div class="fiats-indicators carousel-indicators absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3" role="tablist">
+        <div class="fiat-indicators carousel-indicators absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3" role="tablist">
             <button data-slide-to="0" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 active:opacity-100 focus:opacity-100" aria-label="Go to slide 1"></button>
             <button data-slide-to="1" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 hover:opacity-80 focus:opacity-80" aria-label="Go to slide 2"></button>
             <button data-slide-to="2" class="w-3 h-3 rounded-full bg-white opacity-40 transition duration-300 hover:opacity-80 focus:opacity-80" aria-label="Go to slide 3"></button>
@@ -323,7 +323,7 @@
         // or ensure your selector (e.g., '.fiat-next') targets the button within the specific carousel ID.
         // I've updated the buttons to use unique classes (fiat-next, fiat-prev) and the indicator container to use 'fiat-indicators'.
         initializeCarousel('fiatCarousel', 'fiat-next', 'fiat-prev', 'fiat-indicators', 4000);
-        initializeCarousel('fiatsCarousel', 'fiats-next', 'fiats-prev', 'fiats-indicators', 4001);
+        initializeCarousel('fiatsCarousel', 'fiats-next', 'fiats-prev', 'fiat-indicators', 4001);
         
         // Mobile Menu Toggler
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
